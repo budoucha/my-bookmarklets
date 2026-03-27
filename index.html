@@ -9,11 +9,10 @@
 <body>
 
   <header>
-    <h1>🔖 My Bookmarklets <span>— browser utilities you can save</span></h1>
+    <h1>My Bookmarklets <span>browser utilities you can save</span></h1>
   </header>
 
   <main>
-    <!-- ── List panel ── -->
     <aside>
       <div class="panel">
         <div class="panel-header">Bookmarklets</div>
@@ -26,32 +25,12 @@
       </div>
     </aside>
 
-    <!-- ── Detail panel ── -->
     <section id="detail-panel" class="panel" aria-live="polite" aria-label="Bookmarklet details">
       <!-- injected by JS -->
     </section>
   </main>
 
-  <!-- ── Toast ── -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <!-- ── Favorite modal ── -->
-  <div class="modal-backdrop" id="fav-modal" role="dialog" aria-modal="true" aria-labelledby="fav-modal-title">
-    <div class="modal">
-      <h3 id="fav-modal-title">⭐ Add to Bookmarks</h3>
-      <p>Drag the link below to your <strong>bookmarks bar</strong> to install this bookmarklet:</p>
-      <a id="fav-link" href="#" class="bookmarklet-drag-link">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-          <path d="M8 1l1.545 3.13 3.455.502-2.5 2.437.59 3.442L8 8.902l-3.09 1.609.59-3.442-2.5-2.437 3.455-.502z"/>
-        </svg>
-        <span id="fav-link-label">Drag me to your bookmarks bar</span>
-      </a>
-      <p class="modal-tip">💡 <strong>Tip:</strong> Make sure your bookmarks bar is visible (Ctrl+Shift+B / ⌘+Shift+B), then drag the link above onto it.</p>
-      <div class="modal-footer">
-        <button class="btn btn-primary" id="fav-modal-close">Done</button>
-      </div>
-    </div>
-  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
   <script src="./app.js"></script>
