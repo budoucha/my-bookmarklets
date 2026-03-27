@@ -495,6 +495,13 @@
     const RAW_BASE    = `https://raw.githubusercontent.com/${REPO}/${BRANCH}`;
     const GITHUB_BASE = `https://github.com/${REPO}/tree/${BRANCH}`;
 
+    function contentsApiUrl(path = "") {
+      const trimmed = String(path ?? "").replace(/^\/+/, "");
+      const url = new URL(trimmed ? `${API_BASE}/${trimmed}` : `${API_BASE}/`);
+      url.searchParams.set("ref", BRANCH);
+      return url.toString();
+    }
+
     /* Named directories to skip (hidden dirs starting with "." are also excluded) */
     const EXCLUDE_DIRS = new Set(["node_modules", ".github"]);
 
@@ -508,22 +515,34 @@
       if (fetchCache.has(url)) return fetchCache.get(url);
       try {
         const r = await fetch(url);
-        if (!r.ok) return null;
+        if (!r.ok) {
+          console.warn(`fetchText failed: ${r.status} ${r.statusText}`, url);
+          return null;
+        }
         const t = await r.text();
         fetchCache.set(url, t);
         return t;
-      } catch { return null; }
+      } catch (err) {
+        console.error("fetchText error:", url, err);
+        return null;
+      }
     }
 
     async function fetchJSON(url) {
       if (fetchCache.has(url)) return fetchCache.get(url);
       try {
         const r = await fetch(url);
-        if (!r.ok) return null;
+        if (!r.ok) {
+          console.warn(`fetchJSON failed: ${r.status} ${r.statusText}`, url);
+          return null;
+        }
         const j = await r.json();
         fetchCache.set(url, j);
         return j;
-      } catch { return null; }
+      } catch (err) {
+        console.error("fetchJSON error:", url, err);
+        return null;
+      }
     }
 
     /* ── Helpers ── */
@@ -543,7 +562,7 @@
 
     /* ── Load bookmarklet list ── */
     async function loadBookmarklets() {
-      const items = await fetchJSON(`${API_BASE}/`);
+      const items = await fetchJSON(contentsApiUrl());
       if (!items || !Array.isArray(items)) {
         renderError("Could not load bookmarklets from GitHub API. Please try again later.");
         return;
