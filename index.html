@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Bookmarklets</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+
+  <header>
+    <h1>My Bookmarklets <span>browser utilities you can save to your bookmarks</span></h1>
+  </header>
+
+  <main>
+    <aside>
+      <div class="panel">
+        <div class="panel-header">Bookmarklets</div>
+        <div id="list-container">
+          <div class="state-box">
+            <div class="spinner"></div>
+            <div>Loading&hellip;</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section id="detail-panel" class="panel" aria-live="polite" aria-label="Bookmarklet details">
+      <!-- injected by JS -->
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
