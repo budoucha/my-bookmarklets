@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Dark navy background -->
+  <rect width="32" height="32" rx="6" fill="#1a2b4a"/>
+
+  <!-- Gold 5-pointed star, center (13, 14), outer r=9, inner r=3.6 -->
+  <polygon
+    fill="#FFD700"
+    points="13,5 15.12,11.09 21.56,11.22 16.42,15.11 18.29,21.28 13,17.6 7.71,21.28 9.58,15.11 4.44,11.22 10.88,11.09"
+  />
+
+  <!-- Ice-blue open-end wrench, lower-right, rotated -40° -->
+  <g fill="#E0EEFF" transform="translate(24,23) rotate(-40)">
+    <!-- Handle -->
+    <rect x="-1.2" y="-0.5" width="2.4" height="6.5" rx="1.2"/>
+    <!-- Left jaw -->
+    <rect x="-3.2" y="-6.5" width="2.0" height="5.0" rx="0.8"/>
+    <!-- Right jaw -->
+    <rect x="1.2" y="-6.5" width="2.0" height="5.0" rx="0.8"/>
+    <!-- Connector across the top of the jaws -->
+    <rect x="-3.2" y="-7.2" width="6.4" height="2.0" rx="1.0"/>
+  </g>
+</svg>
