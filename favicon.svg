@@ -11,13 +11,13 @@
     </linearGradient>
   </defs>
 
-  <!-- Star (background) centered at 22,23, outer r=23, inner r=9.5 -->
+  <!-- Star (background) centered at 32,32, outer r=32, inner r=13 -->
   <polygon
     fill="url(#starGrad)"
     stroke="#a87400"
     stroke-width="1.2"
     stroke-linejoin="round"
-    points="22,0 27.58,15.31 43.88,15.89 31.04,25.94 35.52,41.61 22,32.5 8.48,41.61 12.96,25.94 0.12,15.89 16.42,15.31"/>
+    points="32,0 39.64,21.48 62.44,22.11 44.36,36.02 50.81,57.89 32,45 13.19,57.89 19.64,36.02 1.56,22.11 24.36,21.48"/>
 
   <!-- Gear (foreground) centered at 44,44, 9 teeth, tip r=15, root r=11 -->
   <g transform="translate(44,44)">
@@ -35,7 +35,6 @@
          L-7.36,-8.17 L-8.82,-12.14 L-6.10,-13.70 L-3.40,-10.46
          L-0.38,-10.99 L1.05,-14.96 L4.13,-14.42 L4.12,-10.20
          L6.77,-8.67 L10.42,-10.79 L12.44,-8.39 L9.71,-5.16 Z"/>
-    <!-- Hub -->
     <circle r="4" fill="#3a4a5a"/>
     <circle r="2.8" fill="url(#gearGrad)"/>
     <circle r="1.4" fill="#3a4a5a"/>
