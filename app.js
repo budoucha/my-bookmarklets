@@ -21,6 +21,7 @@ const EXCLUDE_DIRS = new Set(["node_modules", ".github"]);
 let bookmarklets = [];
 let selectedIdx = -1;
 const fetchCache = new Map();
+const REPO_NAME = REPO.split("/")[1];
 
 /* Fetch helpers */
 async function fetchText(url) {
@@ -72,6 +73,64 @@ function h1FromReadme(readme) {
   return m ? m[1].trim() : null;
 }
 
+function normalizeBookmarkletKey(value) {
+  return String(value ?? "").trim().replace(/^\/+|\/+$/g, "");
+}
+
+function bookmarkletKeyFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const queryKey = normalizeBookmarkletKey(params.get("b") ?? params.get("bookmarklet"));
+  if (queryKey) return queryKey;
+
+  const pathParts = window.location.pathname
+    .split("/")
+    .filter(Boolean)
+    .map(decodeURIComponent);
+
+  if (pathParts[0] === REPO_NAME) pathParts.shift();
+  return normalizeBookmarkletKey(pathParts[0]);
+}
+
+function bookmarkletUrl(dirName) {
+  const encoded = encodeURIComponent(dirName);
+  const pathParts = window.location.pathname.split("/").filter(Boolean);
+
+  if (pathParts[0] === REPO_NAME) {
+    return `/${REPO_NAME}/${encoded}`;
+  }
+
+  const url = new URL(window.location.href);
+  url.searchParams.set("b", dirName);
+  return `${url.pathname}${url.search}${url.hash}`;
+}
+
+function clearSelection(message = "") {
+  selectedIdx = -1;
+  renderList();
+
+  const panel = document.getElementById("detail-panel");
+  panel.classList.remove("visible");
+  panel.innerHTML = "";
+
+  if (message) showToast(message);
+}
+
+function selectBookmarkletFromUrl() {
+  const requestedKey = bookmarkletKeyFromUrl();
+  if (!requestedKey) {
+    clearSelection();
+    return;
+  }
+
+  const idx = bookmarklets.findIndex(bm => bm.dirName === requestedKey);
+  if (idx === -1) {
+    clearSelection(`Bookmarklet not found: ${requestedKey}`);
+    return;
+  }
+
+  selectBookmarklet(idx, { updateUrl: false });
+}
+
 /* Load bookmarklet list */
 async function loadBookmarklets() {
   const items = await fetchJSON(contentsApiUrl());
@@ -101,6 +160,7 @@ async function loadBookmarklets() {
   }));
 
   renderList();
+  selectBookmarkletFromUrl();
 }
 
 /* Render list */
@@ -141,11 +201,16 @@ function renderList() {
 }
 
 /* Select bookmarklet */
-async function selectBookmarklet(idx) {
+async function selectBookmarklet(idx, options = {}) {
+  const { updateUrl = true } = options;
   selectedIdx = idx;
   renderList();
 
   const bm = bookmarklets[idx];
+  if (updateUrl) {
+    history.pushState({ bookmarklet: bm.dirName }, "", bookmarkletUrl(bm.dirName));
+  }
+
   const panel = document.getElementById("detail-panel");
   panel.innerHTML = `<div class="state-box"><div class="spinner"></div><div>Loading&hellip;</div></div>`;
   panel.classList.add("visible");
@@ -270,5 +335,7 @@ function iconGitHub() {
       1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
   </svg>`;
 }
+
+window.addEventListener("popstate", selectBookmarkletFromUrl);
 
 loadBookmarklets().catch(() => renderError("Failed to load bookmarklets."));

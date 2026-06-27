@@ -1,5 +1,4 @@
 # my-bookmarklets
-
 ブラウザのブックマークレットを管理・共有するためのカタログサイトです。
 GitHub Pages を利用して、追加したブックマークレットを自動的にWebページに反映・配信します。
 
@@ -14,6 +13,13 @@ GitHub Pages を利用して、追加したブックマークレットを自動�
 3. 詳細パネルで説明を確認し、右上の **Copy** ボタン、またはサイドバーのコピーアイコンをクリックしてコードをコピーします。
 4. お使いのブラウザ（Chrome, Edge, Safari, Firefoxなど）で新しいブックマークを作成し、URL欄にコピーしたコードを貼り付けて保存します。
 5. 対象のWebページを開いた状態で、作成したブックマークをクリックして実行します。
+
+### 特定のブックマークレットへの直リンク
+
+一覧ページを開いた時点で特定のブックマークレットを選択した状態にするには、以下のどちらかのURL形式を使用できます。
+
+- `https://budoucha.github.io/my-bookmarklets/akizuki-copy`
+- `https://budoucha.github.io/my-bookmarklets/?b=akizuki-copy`
 
 ---
 
