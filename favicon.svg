@@ -2,8 +2,8 @@
   <title>My Bookmarklets</title>
   <defs>
     <linearGradient id="gearGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#9aa5b0"/>
-      <stop offset="1" stop-color="#4a5568"/>
+      <stop offset="0" stop-color="#c8d8e8"/>
+      <stop offset="1" stop-color="#7890a8"/>
     </linearGradient>
     <linearGradient id="starGrad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ffe566"/>
@@ -11,34 +11,33 @@
     </linearGradient>
   </defs>
 
-  <!-- Star (background) centered at 22,22, outer r=22, inner r=9 -->
+  <!-- Star (background) centered at 22,23, outer r=23, inner r=9.5 -->
   <polygon
     fill="url(#starGrad)"
     stroke="#a87400"
     stroke-width="1.2"
     stroke-linejoin="round"
-    points="22,0 27.29,14.72 42.92,15.20 30.56,24.78 34.93,39.80 22,31 9.07,39.80 13.44,24.78 1.08,15.20 16.71,14.72"/>
+    points="22,0 27.58,15.31 43.88,15.89 31.04,25.94 35.52,41.61 22,32.5 8.48,41.61 12.96,25.94 0.12,15.89 16.42,15.31"/>
 
-  <!-- Gear (foreground) centered at 44,44, 8 realistic trapezoidal teeth -->
-  <!-- tip r=18, root r=13, tooth tip half-angle=8°, root half-angle=15° -->
+  <!-- Gear (foreground) centered at 44,44, 9 teeth, tip r=15, root r=11 -->
   <g transform="translate(44,44)">
     <path
       fill="url(#gearGrad)"
-      stroke="#1a202c"
-      stroke-width="0.9"
+      stroke="#3a4a5a"
+      stroke-width="0.8"
       stroke-linejoin="round"
-      d="M12.56,-3.36 L17.83,-2.50 L17.83,2.50 L12.56,3.36
-         L11.26,6.50 L14.37,10.83 L10.83,14.37 L6.50,11.26
-         L3.36,12.56 L2.50,17.83 L-2.50,17.83 L-3.36,12.56
-         L-6.50,11.26 L-10.83,14.37 L-14.37,10.83 L-11.26,6.50
-         L-12.56,3.36 L-17.83,2.50 L-17.83,-2.50 L-12.56,-3.36
-         L-11.26,-6.50 L-14.37,-10.83 L-10.83,-14.37 L-6.50,-11.26
-         L-3.36,-12.56 L-2.50,-17.83 L2.50,-17.83 L3.36,-12.56
-         L6.50,-11.26 L10.83,-14.37 L14.37,-10.83 L11.26,-6.50 Z"/>
-    <!-- Hub ring -->
-    <circle r="6" fill="#1a202c" stroke="#1a202c" stroke-width="0.5"/>
-    <circle r="4.5" fill="url(#gearGrad)"/>
-    <!-- Center bore -->
-    <circle r="2.2" fill="#1a202c"/>
+      d="M10.76,-2.29 L14.92,-1.57 L14.92,1.57 L10.76,2.29
+         L9.71,5.16 L12.44,8.39 L10.42,10.79 L6.77,8.67
+         L4.12,10.20 L4.13,14.42 L1.05,14.96 L-0.38,10.99
+         L-3.40,10.46 L-6.10,13.70 L-8.82,12.14 L-7.36,8.17
+         L-9.33,5.83 L-13.48,6.58 L-14.55,3.63 L-10.89,1.53
+         L-10.89,-1.53 L-14.55,-3.63 L-13.48,-6.58 L-9.33,-5.83
+         L-7.36,-8.17 L-8.82,-12.14 L-6.10,-13.70 L-3.40,-10.46
+         L-0.38,-10.99 L1.05,-14.96 L4.13,-14.42 L4.12,-10.20
+         L6.77,-8.67 L10.42,-10.79 L12.44,-8.39 L9.71,-5.16 Z"/>
+    <!-- Hub -->
+    <circle r="4" fill="#3a4a5a"/>
+    <circle r="2.8" fill="url(#gearGrad)"/>
+    <circle r="1.4" fill="#3a4a5a"/>
   </g>
 </svg>
