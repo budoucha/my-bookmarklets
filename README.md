@@ -16,9 +16,8 @@ GitHub Pages を利用して、追加したブックマークレットを自動�
 
 ### 特定のブックマークレットへの直リンク
 
-一覧ページを開いた時点で特定のブックマークレットを選択した状態にするには、以下のどちらかのURL形式を使用できます。
+一覧ページを開いた時点で特定のブックマークレットを選択した状態にするには、`b` クエリでブックマークレットのディレクトリ名を指定します。
 
-- `https://budoucha.github.io/my-bookmarklets/akizuki-copy`
 - `https://budoucha.github.io/my-bookmarklets/?b=akizuki-copy`
 
 ---

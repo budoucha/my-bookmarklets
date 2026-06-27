@@ -92,15 +92,17 @@ function bookmarkletKeyFromUrl() {
 }
 
 function bookmarkletUrl(dirName) {
-  const encoded = encodeURIComponent(dirName);
+  const url = new URL(window.location.href);
   const pathParts = window.location.pathname.split("/").filter(Boolean);
 
   if (pathParts[0] === REPO_NAME) {
-    return `/${REPO_NAME}/${encoded}`;
+    url.pathname = `/${REPO_NAME}/`;
+  } else if (pathParts.length > 0) {
+    url.pathname = "/";
   }
 
-  const url = new URL(window.location.href);
   url.searchParams.set("b", dirName);
+  url.searchParams.delete("bookmarklet");
   return `${url.pathname}${url.search}${url.hash}`;
 }
 
