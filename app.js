@@ -246,13 +246,22 @@ async function selectBookmarklet(idx, options = {}) {
     </div>
     <div class="detail-info">${readmeHtml}</div>
     <div class="detail-code">
-      <label class="code-label" for="code-textarea">Formatted Code</label>
+      <div class="code-header">
+        <label class="code-label" for="code-textarea">Formatted Code</label>
+        <button class="btn" id="formatted-copy-btn" title="Copy formatted code to clipboard">
+          ${iconClipboard()}
+          Copy
+        </button>
+      </div>
       <textarea id="code-textarea" class="code-textarea" readonly spellcheck="false">${esc(codeDisplay)}</textarea>
     </div>
   `;
 
   document.getElementById("detail-copy-btn").addEventListener("click", () => {
     copyCode(minCode, document.getElementById("detail-copy-btn"));
+  });
+  document.getElementById("formatted-copy-btn").addEventListener("click", () => {
+    copyCode(formattedCode, document.getElementById("formatted-copy-btn"));
   });
 }
 
